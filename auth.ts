@@ -39,19 +39,25 @@ export const { auth, handlers:{GET,POST}, signIn, signOut } = NextAuth({
     })
   ],
   callbacks:{
+
+
+
+
+
     async signIn({ user,account}){
       // กรณีที่การlogin ไม่ใช่ google เพราะมาจาก google จะใให้ผ่านไปได้เลย ไม่ต้องรอ
       if(account?.provider !== 'credentials'){
         return true;
       }
-    
-      // ลงมาคือกรณีเป็นcredentails จะให้เช็คว่า มีการ ยืนยัน เมลยัง ถึงจะให้เข้า
+
+      // ลงมาคือกรณีเป็น credentials จะให้เช็คว่า มีการ ยืนยัน เมลยัง ถึงจะให้เข้า
       const existingUser = await getUserById(user.id ?? "");
 
       if(!existingUser?.emailVerified){
         return false;
       }
       return true;
+      
     },
     async jwt({token}){
       // จะได้ข้อมูลของuser ตอนนี้มา
