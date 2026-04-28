@@ -31,6 +31,7 @@ export const register =async(data:z.infer<typeof RegisterSchema>)=>{
             }
         })
 
+        // ถ้ามีซํ้า
         if(userExists){
             return { error:'User already exists'}
         }
@@ -48,6 +49,7 @@ export const register =async(data:z.infer<typeof RegisterSchema>)=>{
         })
 
         return { success: "user created successfully"}
+        
     }catch(error){
         console.log(error);
         return {error:"An error occured"}

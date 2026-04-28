@@ -11,7 +11,9 @@ import { useState } from "react";
 import { FormError } from "../form-error";
 import { login } from "@/actions/login";
 import Link from "next/link";
+import GoogleLogin  from "../google-button";
 import {
+  
   Field,
   FieldError,
   FieldGroup,
@@ -109,6 +111,7 @@ const LoginForm = () => {
         </Button>
       </form>
       {/* Google form */}
+      <GoogleLogin/>
     </CardWrapper>
   );
 };
